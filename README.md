@@ -18,6 +18,6 @@ target_link_libraries(hello Threads::Threads)
 ```
 
 ### Reference:
-[1]: https://stackoverflow.com/questions/30734136/cmake-linking-error-pthread-enable-multithreading-to-use-stdthread-operation: "CMake Linking Error pthread"
-[1]: https://cprieto.com/posts/2021/03/cmake-and-threads.html "Cmake and Threads"
+[1]: [CMake Linking Error pthread](https://cprieto.com/posts/2021/03/cmake-and-threads.html)
+[2]: [Cmake and Threads](https://cprieto.com/posts/2021/03/cmake-and-threads.html)
 
