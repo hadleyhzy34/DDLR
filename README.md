@@ -29,3 +29,21 @@ target_link_libraries(hello Threads::Threads)
 
 [2]: [Cmake and Threads](https://cprieto.com/posts/2021/03/cmake-and-threads.html)
 
+### basic thread initialization
+
+#### func
+
+```
+std::thread obj(func);
+obj.join();
+```
+
+#### class
+
+```
+std::thread 
+```
+
+#### lamda expression
+
+

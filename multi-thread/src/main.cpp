@@ -10,7 +10,8 @@ void myprint()
 }
 
 int main(int, char**) {
-    std::cout << "Hello, world!\n";
+    std::cout << "main thread is started!\n";
     std::thread myobj(myprint);
-    myobj.join();
+    //myobj.join();
+    std::cout << "main thread is finished\n";
 }
