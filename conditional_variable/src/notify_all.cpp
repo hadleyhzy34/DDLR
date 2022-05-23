@@ -5,6 +5,8 @@
 #include <mutex>
 #include <condition_variable>
 
+//reference: https://en.cppreference.com/w/cpp/thread/condition_variable/wait
+//reference: https://www.cplusplus.com/reference/condition_variable/condition_variable/wait/
 std::mutex mtx;
 std::condition_variable cv;
 bool ready = false;
