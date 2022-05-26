@@ -1,0 +1,55 @@
+/*reference:
+ * https://www.cplusplus.com/reference/future/future/
+ * https://en.cppreference.com/w/cpp/thread/future
+ * Promise
+*/
+
+// promise example
+#include <iostream>       // std::cout
+#include <functional>     // std::ref
+#include <thread>         // std::thread
+#include <future>         // std::promise, std::future
+
+int add(int a, int b){
+    int res = a + b;
+    std::cout<<"res operation is started and calculated\n";
+    return res;
+}
+
+int step1(int para)
+{
+    std::cout<<"mythread started: "<<std::this_thread::get_id()<<std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::cout<<"mythread end"<<std::this_thread::get_id()<<std::endl;
+    return 1;
+}
+
+int step2(std::future<int> &temp)
+{
+    std::cout<<"step2 started: "<<std::this_thread::get_id()<<std::endl;
+    auto result = temp.get();
+    std::cout<<"step2 ended with result: "<<result<<std::endl;
+    return 1;
+}
+
+int main ()
+{
+    std::packaged_task<int(int,int)> pkg_tsk(add);
+
+    std::future<int> result = pkg_tsk.get_future();
+    
+    int a = 3;
+    int b = 4;
+    
+    std::cout<<"operation is not started yet\n";
+    
+    //pkg_tsk(a,b);
+    std::thread th(std::move(pkg_tsk), a, b);
+    th.join();
+
+    std::cout<<"packaged result is: "<<result.get()<<std::endl;
+    
+    std::thread th1(add,a,b);
+    th1.join();
+    return 0;
+}
